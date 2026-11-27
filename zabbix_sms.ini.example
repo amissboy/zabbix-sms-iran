@@ -1,0 +1,29 @@
+# Copy to /etc/zabbix/zabbix_sms.ini
+#   chown root:zabbix /etc/zabbix/zabbix_sms.ini && chmod 640 /etc/zabbix/zabbix_sms.ini
+
+[general]
+# melipayamak | kavenegar | smsir
+provider = melipayamak
+# subject  -> only {ALERT.SUBJECT} (recommended: short and cheap)
+# message  -> only {ALERT.MESSAGE}
+# both     -> subject + newline + message
+mode = subject
+max_length = 300
+
+[melipayamak]
+username = 09xxxxxxxxx
+password = your-api-password
+# Free-text sending from a dedicated line:
+from = 5000xxxxxxxx
+# OR pattern sending from the shared service line: set the pattern code here.
+# The pattern must have exactly one variable, e.g.  "Zabbix: {0}"
+body_id =
+
+[kavenegar]
+api_key = your-kavenegar-api-key
+# optional; empty = default line of the account
+sender =
+
+[smsir]
+api_key = your-sms.ir-api-key
+line_number = 30007732000000
